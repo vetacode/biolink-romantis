@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biolink Putra Candra Buana</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background: #ff4fa3;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 420px;
+        width: 100%;
+      }
+
+      .card {
+        background: #0f172a;
+        border-radius: 26px;
+        padding: 25px 15px 0;
+        overflow: hidden;
+      }
+
+      .profile {
+        width: 130px;
+        height: 130px;
+        border-radius: 18px;
+        object-fit: cover;
+        margin: auto;
+        display: block;
+        border: 4px solid rgba(255, 255, 255, 0.5);
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-top: 12px;
+        font-weight: 800;
+      }
+
+      .desc {
+        font-size: 13px;
+        margin: 10px 0 15px;
+      }
+
+      .quote {
+        font-size: 12px;
+        margin: 8px 0;
+        line-height: 1.6;
+        color: #e2e8f0;
+        font-style: italic;
+      }
+
+      .highlight {
+        background: #fff;
+        color: #ff1493;
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 15px 0;
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      /* warna tombol tetap serasi */
+      .game1 {
+        background: #ff6ec7;
+      }
+      .game2 {
+        background: #ff4da6;
+      }
+      .game3 {
+        background: #ff85c1;
+      }
+      .game4 {
+        background: #ff66b2;
+      }
+      .game5 {
+        background: #ff99cc;
+      }
+      .game6 {
+        background: #ff3385;
+      }
+      .game7 {
+        background: #ff80bf;
+      }
+
+      .products {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .product {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      .product img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .product h4 {
+        font-size: 13px;
+        margin: 8px 0;
+      }
+
+      .price {
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .buy {
+        display: block;
+        background: #fff;
+        color: #ff1493;
+        margin-top: 8px;
+        padding: 7px;
+        border-radius: 8px;
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .cta-text {
+        margin: 16px 0;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .footer {
+        margin-top: 18px;
+        font-size: 11px;
+        background: #c2185b;
+        padding: 14px;
+        border-radius: 18px 18px 26px 26px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <img
+          src="https://suksespintar.biz.id/gambarbebas/20260415-073210_putra%20candra%20buana%20kandisha.jpg"
+          class="profile"
+        />
+
+        <h1>kumpulan permainan romantis</h1>
+
+        <div class="desc">
+          Mainkan bersama pasangan dan temukan kecocokan kalian ❤️
+        </div>
+
+        <div class="quote">
+          "Cinta tumbuh dari kebersamaan kecil yang dilakukan setiap hari."
+        </div>
+        <div class="quote">
+          "Semakin sering bermain bersama, semakin dalam rasa."
+        </div>
+        <div class="quote">"Hubungan kuat dimulai dari momen sederhana."</div>
+
+        <div class="highlight">
+          Pilih permainan di bawah ini dan mulai perjalanan romantis Anda
+        </div>
+
+        <!-- TAUTAN BARU -->
+        <a href="#" class="btn game1">Tes IQ Pasangan</a>
+
+        <a href="#" class="btn game2">Jodoh Artis yang Pas (Pria)</a>
+
+        <a href="#" class="btn game3">Jodoh Artis yang Pas (Wanita)</a>
+
+        <a href="#" class="btn game4">Tes Seberapa Cocok Hubungan Kalian</a>
+
+        <a href="#" class="btn game5">Tes Bahasa Cinta Anda</a>
+
+        <a href="#" class="btn game6">Tes Kesetiaan Pasangan</a>
+
+        <a href="#" class="btn game7">Tes Siapa yang Lebih Dominan</a>
+
+        <!-- PRODUK (TIDAK DIUBAH) -->
+        <div class="products">
+          <div class="product">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260415-073210_putra%20candra%20buana%20kandisha.jpg"
+            />
+            <h4>Produk 1</h4>
+            <div class="price">Rp 79.000</div>
+            <a href="#" class="buy">Beli</a>
+          </div>
+
+          <div class="product">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260415-073254_bisnisawet.png"
+            />
+            <h4>Produk 2</h4>
+            <div class="price">Rp 89.000</div>
+            <a href="#" class="buy">Beli</a>
+          </div>
+
+          <div class="product">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260415-073254_bodoh%20misahin.png"
+            />
+            <h4>Produk 3</h4>
+            <div class="price">Rp 69.000</div>
+            <a href="#" class="buy">Beli</a>
+          </div>
+
+          <div class="product">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260415-073255_botak.jpg"
+            />
+            <h4>Produk 4</h4>
+            <div class="price">Rp 99.000</div>
+            <a href="#" class="buy">Beli</a>
+          </div>
+        </div>
+
+        <div class="cta-text">
+          Klik produk di atas untuk melihat dan memesan produk pilihan Anda
+        </div>
+
+        <div class="footer">
+          Bangun aset digital dan kembangkan bisnis Anda mulai hari ini
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
