@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Jodoh Ideal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(180deg, #fff0f6, #ffe4ec);
+        font-family: Arial, sans-serif;
+        color: #7a214f;
+      }
+
+      .quiz-box {
+        max-width: 650px;
+        margin: 20px auto;
+        background: #fff;
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 12px 35px rgba(214, 51, 108, 0.15);
+        border: 2px solid #ffd1e1;
+      }
+
+      .header-box {
+        background: linear-gradient(135deg, #ff4d88, #ff85a2);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+
+      .header-box h1 {
+        font-size: 26px;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      .header-box p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .progress {
+        height: 12px;
+        border-radius: 30px;
+        background: #ffd6e7;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+
+      .progress-bar {
+        background: linear-gradient(90deg, #ff4d88, #ff85a2);
+        transition: width 0.3s ease;
+      }
+
+      .question-number {
+        font-size: 14px;
+        font-weight: bold;
+        color: #c2185b;
+        margin-bottom: 10px;
+      }
+
+      .question-text {
+        font-size: 23px;
+        font-weight: bold;
+        line-height: 1.5;
+        min-height: 120px;
+        margin-bottom: 22px;
+        color: #8e2457;
+      }
+
+      .btn-answer {
+        width: 100%;
+        border: none;
+        border-radius: 16px;
+        padding: 14px 16px;
+        margin-bottom: 12px;
+        text-align: left;
+        font-size: 17px;
+        font-weight: bold;
+        transition: all 0.25s ease;
+      }
+
+      .btn-answer i {
+        margin-right: 10px;
+      }
+
+      .btn-a {
+        background: #ffe3ef;
+        color: #a61c5b;
+      }
+
+      .btn-b {
+        background: #ffd6e7;
+        color: #a61c5b;
+      }
+
+      .btn-c {
+        background: #ffc2da;
+        color: #a61c5b;
+      }
+
+      .btn-answer:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(214, 51, 108, 0.15);
+      }
+
+      .result-box {
+        display: none;
+        text-align: center;
+      }
+
+      .result-box h2 {
+        color: #c2185b;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      .artist-image {
+        width: 170px;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #ffd1e1;
+        margin: 10px auto 16px;
+        display: block;
+      }
+
+      .result-desc {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #8e2457;
+        margin-bottom: 16px;
+      }
+
+      .action-btn {
+        border: none;
+        border-radius: 14px;
+        padding: 12px 18px;
+        font-weight: bold;
+        margin: 6px;
+      }
+
+      .btn-share {
+        background: #25d366;
+        color: #fff;
+      }
+
+      .btn-restart {
+        background: #ff4d88;
+        color: #fff;
+      }
+
+      .ebook-card {
+        margin-top: 22px;
+        background: #fff6fa;
+        border: 2px dashed #ff85a2;
+        border-radius: 20px;
+        padding: 18px;
+        text-align: center;
+      }
+
+      .ebook-card img {
+        width: 170px;
+        max-width: 100%;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        box-shadow: 0 8px 20px rgba(214, 51, 108, 0.12);
+      }
+
+      .ebook-card h3 {
+        font-size: 22px;
+        color: #c2185b;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .ebook-card p {
+        color: #8e2457;
+        line-height: 1.7;
+        margin-bottom: 12px;
+      }
+
+      .btn-ebook {
+        background: #ff4d88;
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        padding: 12px 18px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .footer-note {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 13px;
+        color: #b84c7b;
+      }
+
+      .modal-content {
+        border-radius: 22px;
+        border: none;
+        overflow: hidden;
+      }
+
+      .modal-header {
+        background: linear-gradient(135deg, #ff4d88, #ff85a2);
+        color: #fff;
+        border-bottom: none;
+      }
+
+      .modal-body {
+        text-align: center;
+        background: #fff7fb;
+        padding: 22px;
+      }
+
+      .modal-body img {
+        width: 180px;
+        max-width: 100%;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        box-shadow: 0 10px 25px rgba(214, 51, 108, 0.15);
+      }
+
+      .modal-body h3 {
+        color: #c2185b;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .modal-body p {
+        color: #8e2457;
+        line-height: 1.7;
+      }
+
+      .btn-modal-ebook {
+        background: #ff4d88;
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        padding: 12px 18px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .btn-lanjut {
+        background: #ffd6e7;
+        color: #a61c5b;
+        border: none;
+        border-radius: 14px;
+        padding: 12px 18px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 576px) {
+        .quiz-box {
+          margin: 10px;
+          padding: 15px;
+        }
+        .header-box h1 {
+          font-size: 22px;
+        }
+        .question-text {
+          font-size: 20px;
+          min-height: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="quiz-box">
+        <div class="header-box">
+          <h1><i class="fa-solid fa-heart"></i> Quiz Jodoh Ideal</h1>
+          <p>
+            <i class="fa-solid fa-stars"></i> Jawab pertanyaan satu per satu dan
+            lihat hasil artis yang cocok untuk Anda
+          </p>
+        </div>
+
+        <div id="quizArea">
+          <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+          </div>
+
+          <div class="question-number" id="questionNumber"></div>
+          <div class="question-text" id="questionText"></div>
+
+          <button
+            class="btn-answer btn-a"
+            id="btnA"
+            onclick="jawab('A')"
+          ></button>
+          <button
+            class="btn-answer btn-b"
+            id="btnB"
+            onclick="jawab('B')"
+          ></button>
+          <button
+            class="btn-answer btn-c"
+            id="btnC"
+            onclick="jawab('C')"
+          ></button>
+        </div>
+
+        <div class="result-box" id="resultBox">
+          <h2 id="resultTitle"></h2>
+          <img id="resultImage" class="artist-image" src="" alt="Hasil artis" />
+          <div class="result-desc" id="resultDesc"></div>
+
+          <button class="action-btn btn-share" onclick="shareWA()">
+            <i class="fa-brands fa-whatsapp"></i> Share ke WhatsApp
+          </button>
+          <button class="action-btn btn-restart" onclick="ulangQuiz()">
+            <i class="fa-solid fa-rotate-right"></i> Ulangi Quiz
+          </button>
+
+          <div class="ebook-card">
+            <img
+              src="https://ebooks.gramedia.com/ebook-covers/77246/image_highres/BLK_PSH2022182071.jpg"
+              alt="Ebook Mencari Jodoh yang Tepat"
+            />
+            <h3>
+              <i class="fa-solid fa-book-heart"></i> MENCARI JODOH YANG TEPAT
+            </h3>
+            <p>
+              Setelah melihat tipe jodoh yang cocok untuk Anda, dalami lagi cara
+              memilih pasangan yang lebih tepat melalui ebook ini. Cocok untuk
+              yang ingin lebih serius memahami hubungan, karakter, dan arah masa
+              depan.
+            </p>
+            <a
+              class="btn-ebook"
+              href="https://ebooks.gramedia.com/ebook-covers/77246/image_highres/BLK_PSH2022182071.jpg"
+              target="_blank"
+            >
+              <i class="fa-solid fa-book-open"></i> Lihat Ebook
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <i class="fa-solid fa-sparkles"></i> Quiz ini bersifat hiburan dan
+          inspirasi.
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="ebookModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="fa-solid fa-book-heart"></i> Rekomendasi Ebook
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Tutup"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://ebooks.gramedia.com/ebook-covers/77246/image_highres/BLK_PSH2022182071.jpg"
+              alt="Ebook"
+            />
+            <h3>MENCARI JODOH YANG TEPAT</h3>
+            <p>
+              Sebelum lanjut ke pertanyaan berikutnya, Anda bisa lihat ebook ini
+              untuk memahami cara memilih pasangan yang benar-benar cocok dan
+              sehat untuk masa depan.
+            </p>
+            <div>
+              <a
+                href="https://ebooks.gramedia.com/ebook-covers/77246/image_highres/BLK_PSH2022182071.jpg"
+                target="_blank"
+                class="btn btn-modal-ebook"
+              >
+                <i class="fa-solid fa-book-open"></i> Lihat Ebook
+              </a>
+              <button
+                type="button"
+                class="btn btn-lanjut"
+                data-bs-dismiss="modal"
+              >
+                <i class="fa-solid fa-arrow-right"></i> Lanjut Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const questions = [
+        {
+          q: 'Anda lebih nyaman dengan pasangan yang:',
+          A: 'Tenang dan dewasa',
+          B: 'Ceria dan aktif',
+          C: 'Humoris dan santai',
+        },
+        {
+          q: 'Dalam hubungan, Anda lebih suka:',
+          A: 'Pasangan yang memimpin dengan tenang',
+          B: 'Pasangan yang ekspresif',
+          C: 'Pasangan yang tegas',
+        },
+        {
+          q: 'Hal yang paling penting bagi Anda:',
+          A: 'Kesetiaan',
+          B: 'Perhatian',
+          C: 'Masa depan',
+        },
+        {
+          q: 'Saat menghadapi masalah, Anda lebih suka pasangan yang:',
+          A: 'Tenang dulu sebelum bertindak',
+          B: 'Langsung bicara terbuka',
+          C: 'Fokus mencari solusi',
+        },
+        {
+          q: 'Aktivitas ideal bersama pasangan:',
+          A: 'Santai dan sederhana',
+          B: 'Seru dan jalan-jalan',
+          C: 'Produktif dan membangun sesuatu',
+        },
+        {
+          q: 'Anda paling tidak suka pasangan yang:',
+          A: 'Terlalu emosional',
+          B: 'Terlalu cuek',
+          C: 'Tidak punya tujuan hidup',
+        },
+        {
+          q: 'Jika pasangan sedang sibuk:',
+          A: 'Anda memahami dan memberi ruang',
+          B: 'Anda tetap ingin diperhatikan',
+          C: 'Anda fokus ke aktivitas sendiri',
+        },
+        {
+          q: 'Dalam hal keuangan, Anda lebih cocok dengan:',
+          A: 'Orang yang stabil dan hemat',
+          B: 'Orang yang santai dan fleksibel',
+          C: 'Orang yang ambisius',
+        },
+        {
+          q: 'Cinta bagi Anda adalah:',
+          A: 'Komitmen jangka panjang',
+          B: 'Perasaan dan kedekatan',
+          C: 'Kerja sama membangun masa depan',
+        },
+        {
+          q: 'Anda lebih tertarik pada pasangan yang:',
+          A: 'Sederhana dan konsisten',
+          B: 'Menyenangkan dan penuh warna',
+          C: 'Visioner dan punya arah hidup',
+        },
+      ];
+
+      const artistMap = {
+        A: [
+          {
+            name: 'Reza Rahadian',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Reza_Rahadian.jpg/640px-Reza_Rahadian.jpg',
+            desc: 'Anda cocok dengan sosok yang tenang, dewasa, tidak banyak drama, dan nyaman diajak membangun hubungan jangka panjang.',
+          },
+          {
+            name: 'Nicholas Saputra',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Nicholas_Saputra%2C_Jakarta_%282024%29.jpg/640px-Nicholas_Saputra%2C_Jakarta_%282024%29.jpg',
+            desc: 'Tipe pasangan yang cocok untuk Anda adalah yang kalem, elegan, berpikir dalam, dan memberi rasa aman secara emosional.',
+          },
+          {
+            name: 'Keanu Reeves',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Keanu_Reeves_2014.jpg/640px-Keanu_Reeves_2014.jpg',
+            desc: 'Anda cocok dengan sosok sederhana, matang, setia, dan tidak sibuk mencari validasi dari orang lain.',
+          },
+        ],
+        B: [
+          {
+            name: 'Raffi Ahmad',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Raffi_Ahmad_2021.jpg/640px-Raffi_Ahmad_2021.jpg',
+            desc: 'Anda cocok dengan pasangan yang aktif, seru, ekspresif, dan mampu membuat hubungan terasa hidup setiap hari.',
+          },
+          {
+            name: 'Vidi Aldiano',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Vidi_Aldiano_2022.jpg/640px-Vidi_Aldiano_2022.jpg',
+            desc: 'Tipe pasangan Anda cenderung hangat, menyenangkan, romantis, dan mudah membangun suasana yang nyaman.',
+          },
+          {
+            name: 'Ryan Gosling',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Ryan_Gosling_Cannes_2011.jpg/640px-Ryan_Gosling_Cannes_2011.jpg',
+            desc: 'Anda cocok dengan pasangan yang memikat, santai, penuh chemistry, dan memberi warna yang manis dalam hubungan.',
+          },
+        ],
+        C: [
+          {
+            name: 'Deddy Corbuzier',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Deddy_Corbuzier_2022.jpg/640px-Deddy_Corbuzier_2022.jpg',
+            desc: 'Anda cocok dengan pasangan yang tegas, logis, fokus, dan punya standar tinggi dalam hidup.',
+          },
+          {
+            name: 'Sandiaga Uno',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sandiaga_Uno_2022.jpg/640px-Sandiaga_Uno_2022.jpg',
+            desc: 'Tipe pasangan Anda adalah yang visioner, produktif, matang dalam berpikir, dan punya orientasi masa depan yang jelas.',
+          },
+          {
+            name: 'Elon Musk',
+            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Elon_Musk_Royal_Society.jpg/640px-Elon_Musk_Royal_Society.jpg',
+            desc: 'Anda cenderung cocok dengan sosok yang ambisius, unik, penuh ide besar, dan selalu berpikir beberapa langkah ke depan.',
+          },
+        ],
+      };
+
+      let currentQuestion = 0;
+      let score = { A: 0, B: 0, C: 0 };
+      let lastResultName = '';
+
+      const questionNumber = document.getElementById('questionNumber');
+      const questionText = document.getElementById('questionText');
+      const btnA = document.getElementById('btnA');
+      const btnB = document.getElementById('btnB');
+      const btnC = document.getElementById('btnC');
+      const progressBar = document.getElementById('progressBar');
+      const quizArea = document.getElementById('quizArea');
+      const resultBox = document.getElementById('resultBox');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultImage = document.getElementById('resultImage');
+      const resultDesc = document.getElementById('resultDesc');
+
+      const ebookModal = new bootstrap.Modal(
+        document.getElementById('ebookModal'),
+      );
+
+      function renderQuestion() {
+        const q = questions[currentQuestion];
+        questionNumber.innerHTML =
+          '<i class="fa-solid fa-heart-circle-check"></i> Pertanyaan ' +
+          (currentQuestion + 1) +
+          ' dari ' +
+          questions.length;
+        questionText.textContent = q.q;
+        btnA.innerHTML = '<i class="fa-solid fa-heart"></i> ' + q.A;
+        btnB.innerHTML = '<i class="fa-solid fa-face-smile-beam"></i> ' + q.B;
+        btnC.innerHTML = '<i class="fa-solid fa-star"></i> ' + q.C;
+        progressBar.style.width =
+          (currentQuestion / questions.length) * 100 + '%';
+      }
+
+      function jawab(choice) {
+        score[choice]++;
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+          if (currentQuestion % 3 === 0) {
+            renderQuestion();
+            ebookModal.show();
+          } else {
+            renderQuestion();
+          }
+        } else {
+          showResult();
+        }
+      }
+
+      function getDominantType() {
+        let dominant = 'A';
+        if (score.B > score[dominant]) dominant = 'B';
+        if (score.C > score[dominant]) dominant = 'C';
+        return dominant;
+      }
+
+      function showResult() {
+        const dominant = getDominantType();
+        const options = artistMap[dominant];
+        const selected = options[Math.floor(Math.random() * options.length)];
+
+        lastResultName = selected.name;
+
+        quizArea.style.display = 'none';
+        resultBox.style.display = 'block';
+        progressBar.style.width = '100%';
+
+        resultTitle.innerHTML =
+          '<i class="fa-solid fa-heart"></i> Jodoh Anda Mirip: ' +
+          selected.name;
+        resultImage.src = selected.img;
+        resultDesc.innerHTML = selected.desc;
+      }
+
+      function shareWA() {
+        const text =
+          'Hasil quiz jodoh saya: ' + lastResultName + ' 💖 Coba kamu juga ya!';
+        window.open(
+          'https://wa.me/?text=' + encodeURIComponent(text),
+          '_blank',
+        );
+      }
+
+      function ulangQuiz() {
+        currentQuestion = 0;
+        score = { A: 0, B: 0, C: 0 };
+        lastResultName = '';
+        quizArea.style.display = 'block';
+        resultBox.style.display = 'none';
+        progressBar.style.width = '0%';
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      renderQuestion();
+    </script>
+  </body>
+</html>
